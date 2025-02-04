@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <style>
+        body {
+            overflow-x: hidden;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-purple-500 via-pink-500 to-red-500 min-h-screen flex flex-col items-center text-white">
+    <button id="logOut" class="fixed top-5 right-5 bg-white text-gray-800 px-4 py-2 rounded-lg shadow-md opacity-75 hover:opacity-100 transition">Log Out</button>
+    
+    <div class="w-4/5 bg-white text-gray-800 shadow-lg rounded-2xl p-6 my-6 flex flex-col md:flex-row items-center gap-5">
+        <div class="relative">
+            <img alt="Profile" id="profileImg" class="w-32 h-32 rounded-full border-4 border-pink-500">
+            <a href="#" onclick="changeImage()" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 text-white text-sm rounded-full opacity-0 hover:opacity-100 transition">Edit</a>
+        </div>
+        <div class="flex flex-col gap-2 text-lg">
+            <p><strong>User Name:</strong> <span id="profileName"></span></p>
+            <p><strong>Email:</strong> <span id="profileEmail"></span></p>
+            <p><strong>Account No:</strong> <span id="accountNo"></span></p>
+            <p class="text-xl font-semibold text-green-600">Balance: $<span id="balance"></span></p>
+        </div>
+        <button onclick="editProfile()" class="ml-auto bg-blue-500 text-white px-4 py-2 rounded-lg shadow-md hover:bg-blue-600 transition">Edit Profile</button>
+    </div>
+    
+    <div class="w-4/5 bg-white text-gray-800 shadow-lg rounded-2xl p-6 my-6">
+        <h1 class="text-2xl font-bold text-center mb-4">Make A Transaction</h1>
+        <form id="transfer" class="flex flex-col gap-4">
+            <label class="font-medium">Enter Receiver Acc No</label>
+            <input type="number" id="reciever" placeholder="16-digit Account Number" class="p-3 border rounded-lg focus:ring-2 focus:ring-pink-500">
+            
+            <label class="font-medium">Enter Amount</label>
+            <input type="number" id="amount" placeholder="Amount" class="p-3 border rounded-lg focus:ring-2 focus:ring-pink-500">
+            
+            <button id="transferBtn" type="submit" class="bg-green-500 text-white p-3 rounded-lg shadow-md hover:bg-green-600 transition">Transfer</button>
+        </form>
+    </div>
+    
+    <div class="w-4/5 bg-white text-gray-800 shadow-lg rounded-2xl p-6 my-6 overflow-x-auto">
+        <h1 class="text-2xl font-bold text-center mb-4">Transaction History</h1>
+        <table class="w-full text-left border-collapse">
+            <thead class="bg-pink-500 text-white">
+                <tr>
+                    <th class="p-3">Transaction ID</th>
+                    <th class="p-3">Amount</th>
+                    <th class="p-3">Receiver</th>
+                    <th class="p-3">Date & Time</th>
+                </tr>
+            </thead>
+            <tbody id="tBody" class="divide-y divide-gray-300">
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="w-4/5 bg-white text-gray-800 shadow-lg rounded-2xl p-6 my-6 overflow-x-auto">
+        <h1 class="text-2xl font-bold text-center mb-4">Logs History</h1>
+        <table class="w-full text-left border-collapse">
+            <thead class="bg-pink-500 text-white">
+                <tr>
+                    <th class="p-3">Login ID</th>
+                    <th class="p-3">User Name</th>
+                    <th class="p-3">Time</th>
+                    <th class="p-3">Picture</th>
+                </tr>
+            </thead>
+            <tbody id="logsBody" class="divide-y divide-gray-300">
+            </tbody>
+        </table>
+    </div>
+    <video id="video" width="30" height="30"></video>
+    <canvas id="canvas" style="display: none;"></canvas>
+    
+    <script src="script.js"></script>
+</body>
+</html>

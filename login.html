@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="/stylesheets/login.css">
+    <link rel="shortcut icon" href="#" type="image/x-icon">
+    <script src="https://kit.fontawesome.com/371bde42b5.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baskervville+SC&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nerko+One&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+
+</head>
+<body>
+    
+    <section>
+        <div class= "flex justify-center h-screen items-center w-full">
+            <div class="bg-blue-500 relative h-120 max-w-md min-w-sm rounded-lg items-center shadow-black shadow-xl">
+             <div action="#">
+                 <div id="reg" class="toggleActive hidden flex-col justify-center px-12 max-w-sm  w-full  rounded  bg-white h-full md:rounded-lg  md:rounded-tr-full">
+
+                    <h1 class=" text-2xl font-semibold">Registration</h1>
+                    <label for="name" class="text-xl">Enter Your Full Name</label>
+                    <input type="text" name="userName" id="name" class="userName border rounded" placeholder="Jones Camry" required>
+                    
+                    <label for="regEmail" class="text-xl">Enter Your Email</label>
+                    <input type="email" name="email" id="regEmail" class="email border rounded" placeholder="example@abc.com">
+                    
+                    <label for="password" id="crPassword" class="text-xl">Create a password</label>
+                    <input type="password" name="crpassword" id="crPassword" minlength="8" required  class="crPassword border rounded block" placeholder="password">
+                    
+                    <label for="cpassword" id="cfrmPassword" class="text-xl">Confirm your password</label>
+                    <input type="password" name="cfrmpassword" id="cfrmPassword" minlength="8" required class="cfrmPassword border rounded block" placeholder="password">
+                    <p class="font-thin  " id="psdStrength">your password must contain symbols, uppercase,lowercase</p>
+                   
+                    <a id="registerBtn"  class="block text-center border mx-auto my-6 mt-5 w-1/2 text-xl rounded hover:bg-slate-300">Register</a>
+                   <a href="#" id="AlrdBtn" class="text-center text-xl font-thin">Already have account</a>
+                </div>
+             </div>   
+
+                <div>
+                    <div id="login" class="toggleActive flex flex-col w-full max-w-sm  rounded bg-white h-full p-5 md:rounded-tl-full md:h-full justify-center"> 
+                        <h1 class="mx-auto text-2xl font-semibold">Login In</h1>
+                        <label for="email" class="mt-5 text-xl">Enter Your Email</label>
+                        <input type="email" name="email" id="loginEmail" class="loginEmail border rounded" placeholder="Enter your email ">
+                        
+                        <label for="Password" class="mt-5 text-xl">Enter Password</label>
+                        <input type="password" name="email" id="Password" class="loginPassword border rounded block" placeholder="Enter Password">
+                        <button id="loginBtn" type="submit" class="border mx-auto text-xl mt-8 w-1/2 rounded hover:bg-slate-300 ">Log In</button>
+                        <a href="#" id="regBtn" class="text-center font-thin text-sm underline hover:text-blue-500 hover:no-underline mt-8">Register account</a>
+                    </div>
+                
+
+
+                </div>
+
+           </div>
+           
+            
+        </div>
+        
+    </section>
+    
+
+    <script src="loginScript.js"></script>
+</body>
+</html>

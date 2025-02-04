@@ -1,0 +1,38 @@
+
+
+body{
+    background:linear-gradient(135deg, #558ae2 10%, #fcd5f1 100%);;
+}
+
+
+input{
+    border: none;
+    background-color: rgb(241, 236, 236);
+    padding: 10px;
+}
+::-webkit-input-placeholder{
+    font-family: "Roboto";
+}
+h1{
+    font-family: "roboto";
+    font-size: 2.2em;
+    letter-spacing: 2px;
+}
+label{
+    font-family: "open sans";
+}
+button{
+ cursor: pointer;   
+}
+button:focus{
+    background-color: rgb(174, 174, 255);
+    
+}
+
+#registerBtn{
+    cursor: pointer;
+    
+}
+#registerBtn:focus{
+    background: rgb(135, 158, 242);
+}

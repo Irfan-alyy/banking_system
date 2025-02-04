@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile</title>
+   
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+</head>
+
+
+<body>
+    <body class="bg-gradient-to-br from-purple-500 via-pink-500 to-red-500 min-h-screen flex items-center justify-center text-white">
+        <div class="w-4/5 max-w-md bg-white text-gray-800 shadow-lg rounded-2xl p-6 my-6 flex flex-col">
+            <h1 class="text-2xl font-bold text-center mb-4">Edit Profile</h1>
+            <form action="/updateProfile" method="POST" class="w-full flex flex-col gap-4">
+                <div class="flex flex-col">
+                    <label for="username" class="font-medium text-lg">Username:</label>
+                    <input type="text" id="username" name="username" placeholder="e.g., Irfan" required class="p-2 border rounded-lg focus:ring-2 focus:ring-pink-500">
+                </div>
+                <div class="flex flex-col">
+                    <label for="email" class="font-medium text-lg">Email:</label>
+                    <input type="email" id="email" name="email" placeholder="abc@example.com" required class="p-2 border rounded-lg focus:ring-2 focus:ring-pink-500">
+                </div>
+                <div class="flex flex-col">
+                    <label for="password" class="font-medium text-lg">Password:</label>
+                    <input type="password" id="password" name="password" placeholder="Enter a strong password" required class="p-2 border rounded-lg focus:ring-2 focus:ring-pink-500">
+                </div>
+                <div class="flex flex-col">
+                    <label for="confirm-password" class="font-medium text-lg">Confirm Password:</label>
+                    <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your password" required class="p-2 border rounded-lg focus:ring-2 focus:ring-pink-500">
+                </div>
+                <p id="pswrdCheck" class="text-gray-600 text-sm text-center">Password must be at least 8 characters long and contain a mix of letters and numbers.</p>
+                <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded-lg shadow-md hover:bg-green-600 transition w-full">Save Changes</button>
+            </form>
+        </div>
+
+    <script>
+        const form = document.querySelector('form');
+
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const form = document.querySelector('form');
+            const username = document.querySelector('#username').value;
+            const password = document.querySelector('#password').value;
+            const confirmPassword = document.querySelector('#confirm-password').value;
+            const email = document.querySelector('#email').value;
+            const pswrdCheck = document.querySelector('#pswrdCheck');
+
+            const nameRegex = /^[a-zA-Z\s]+$/;
+            const PasswordRegex = /(?=.*[0-9])(?=.*[$&@])/;
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (!nameRegex.test(username)) {
+                alert("Name must contain only letters and spaces");
+                pswrdCheck.textContent = "Name must contain only letters and spaces";
+                return;
+            }
+            if (!emailRegex.test(email)) {
+                alert("Please enter a valid email address");
+                pswrdCheck.textContent = "Please enter a valid email address";
+                return;
+            }
+
+            if (password.length < 8) {
+                alert("Password must be at least 8 characters");
+                pswrdCheck.textContent = "Password must be at least 8 characters";
+                return;
+            }
+
+            if (password != confirmPassword) {
+                alert("Your Password should be same!");
+                pswrdCheck.textContent = "Your Password should be same!";
+                return;
+
+            }
+
+            if (!PasswordRegex.test(confirmPassword)) {
+                alert("Paswword must contain $/&/@ and numbers");
+                pswrdCheck.textContent = "Paswword must contain $/&/@ and numbers";
+                return;
+            }
+
+
+            let emails = JSON.parse(localStorage.getItem('emails'));
+
+            let names = JSON.parse(localStorage.getItem('names'));
+            let passwords = JSON.parse(localStorage.getItem('passwords'));
+            if (names.includes(username)) {
+                alert('Username already exists');
+                return;
+            }
+            if (passwords.includes(password)) {
+                alert('Password already exists');
+                return;
+            }
+            if (emails.includes(email)) {
+                alert('Email already exists');
+                return;
+            }
+            let index = JSON.parse(localStorage.getItem("index"));
+            names[index] = username;
+            passwords[index] = password;
+            emails[index] = email;
+
+            localStorage.setItem('names', JSON.stringify(names));
+            localStorage.setItem('passwords', JSON.stringify(passwords));
+            localStorage.setItem('emails', JSON.stringify(emails));
+            alert('Profile updated successfully');
+            window.location.href = '../../index.html';
+        });
+
+    </script>
+</body>
+
+</html>
